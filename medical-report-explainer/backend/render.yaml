@@ -3,7 +3,8 @@ services:
     name: medical-report-explainer-api
     runtime: docker
     plan: free
-    dockerfilePath: ./backend/Dockerfile
+    dockerContext: medical-report-explainer/backend
+    dockerfilePath: medical-report-explainer/backend/Dockerfile
     envVars:
       - key: GEMINI_API_KEY
         sync: false
