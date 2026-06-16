@@ -1,0 +1,29 @@
+services:
+  backend:
+    build:
+      context: ./backend
+    env_file:
+      - .env
+    environment:
+      VECTOR_DB_PATH: /data/vector_store
+      UPLOAD_DIR: /data/uploads
+      AUTH_DB_PATH: /data/auth.db
+      AUTH_SECRET_KEY: ${AUTH_SECRET_KEY:-change-this-secret-in-production}
+      CORS_ORIGINS: http://localhost:5173,http://localhost:3000,http://localhost
+    volumes:
+      - backend_data:/data
+    ports:
+      - "8000:8000"
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        VITE_API_BASE_URL: http://localhost:8000
+    depends_on:
+      - backend
+    ports:
+      - "5173:80"
+
+volumes:
+  backend_data:
