@@ -17,4 +17,4 @@ services:
       - key: AUTH_SECRET_KEY
         generateValue: true
       - key: CORS_ORIGINS
-        value: https://your-vercel-domain.vercel.app
+        value: https://medical-report-explainer-ai.vercel.app
