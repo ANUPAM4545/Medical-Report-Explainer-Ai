@@ -2,7 +2,7 @@ services:
   - type: web
     name: medical-report-explainer-api
     runtime: docker
-    plan: starter
+    plan: free
     dockerfilePath: ./backend/Dockerfile
     envVars:
       - key: GEMINI_API_KEY
@@ -17,7 +17,3 @@ services:
         generateValue: true
       - key: CORS_ORIGINS
         value: https://your-vercel-domain.vercel.app
-    disk:
-      name: medical-report-data
-      mountPath: /data
-      sizeGB: 5
